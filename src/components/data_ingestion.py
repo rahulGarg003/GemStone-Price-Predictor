@@ -4,6 +4,7 @@ from dataclasses import dataclass
 
 from src.logger import logging
 from src.exception import CustomException
+from src.config import Config
 
 from src.utils import load_dataframe_from_csv, save_dataframe_to_csv
 
@@ -11,9 +12,9 @@ from sklearn.model_selection import train_test_split
 
 @dataclass
 class DataIngestionConfig:
-    raw_data_path: str = os.path.join(os.environ['Z_BASE_PATH'],'artifacts','raw.csv')
-    train_data_path: str = os.path.join(os.environ['Z_BASE_PATH'],'artifacts','train.csv')
-    test_data_path: str = os.path.join(os.environ['Z_BASE_PATH'],'artifacts','test.csv')
+    raw_data_path: str = os.path.join(Config.z_artifacts_path,'raw.csv')
+    train_data_path: str = os.path.join(Config.z_artifacts_path,'train.csv')
+    test_data_path: str = os.path.join(Config.z_artifacts_path,'test.csv')
 
 
 class DataIngestion:
@@ -28,7 +29,6 @@ class DataIngestion:
             df = load_dataframe_from_csv(data_url)
             logging.info('data read as pandas dataframe')
 
-            os.makedirs(os.path.dirname(self.ingestion_config.raw_data_path), exist_ok=True)
             save_dataframe_to_csv(
                 df = df,
                 file_path=self.ingestion_config.raw_data_path,
