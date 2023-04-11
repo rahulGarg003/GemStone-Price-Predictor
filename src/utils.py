@@ -80,6 +80,6 @@ def evaluate_model(X_train, y_train, X_test, y_test, models: dict) -> dict:
             }
 
             report[list(models.keys())[i]] = results
-
+        return report
     except Exception as e:
         raise CustomException(e, sys)

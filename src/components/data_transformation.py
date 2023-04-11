@@ -30,7 +30,7 @@ class DataTransfomation:
             
             # defining categorical cols and numerical cols
             categorical_features = ['cut', 'color', 'clarity']
-            numerical_features = ['carat', 'depth', 'table', 'x', 'y', 'z', 'price']
+            numerical_features = ['carat', 'depth', 'table', 'x', 'y', 'z']
 
             #defining custom Ranking to each oridinal variable 
             cut_categories = ['Fair', 'Good', 'Very Good','Premium','Ideal']
@@ -49,8 +49,8 @@ class DataTransfomation:
 
             cat_pipeline = Pipeline(
                 steps=[
-                    ('imputer',SimpleImputer('most_frequent')),
-                    ('encoder', OrdinalEncoder(categories=[cut_categories, color_categories, clarity_categories]))
+                    ('imputer',SimpleImputer(strategy='most_frequent')),
+                    ('encoder', OrdinalEncoder(categories=[cut_categories, color_categories, clarity_categories])),
                     ('scaler', StandardScaler())
                 ]
             )
@@ -80,7 +80,7 @@ class DataTransfomation:
             logging.info('Obtaining Preprocessing Object')
             preprocessor_obj = self.get_data_transformation_object()
 
-            target_column = 'Price'
+            target_column = 'price'
             drop_columns = [target_column, 'id']
 
             input_features_train_df = train_df.drop(labels=drop_columns, axis=1)

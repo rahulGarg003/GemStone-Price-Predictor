@@ -47,43 +47,42 @@ class ModelTrainer:
             print('\n', '='*50, '\n')
             logging.info(f'Model Report: {model_report}')
 
-            R2_scores = [model.R2score_test for model in model_report.values()]
+            R2_scores = [model['R2score_test'] for model in model_report.values()]
             best_model_score = max(R2_scores)
             best_model_name = list(model_report.keys())[R2_scores.index(best_model_score)]
 
             best_model = models[best_model_name]
             print(
                 f'''
-                        Best Model Found: 
-                        \nModel Name: {best_model_name}
-                        \n'mse_train' : {model_report[best_model_name].mse_train},
-                        \n'mse_test' : {model_report[best_model_name].mse_test},
-                        \n'absolute_mean_error_train' : {model_report[best_model_name].absolute_mean_error_train},
-                        \n'absolute_mean_error_test' : {model_report[best_model_name].absolute_mean_error_test},
-                        \n'rmse_train' : {model_report[best_model_name].rmse_train},
-                        \n'rmse_test' : {model_report[best_model_name].rmse_test},
-                        \n'R2score_train' : {model_report[best_model_name].R2score_train},
-                        \n'R2score_test' : {model_report[best_model_name].R2score_test},
-                        \n'adjusted_R2score_train' : {model_report[best_model_name].adjusted_R2score_train},
-                        \n'adjusted_R2score_test' : {model_report[best_model_name].adjusted_R2score_test}
-                    '''
+                    Best Model Found: 
+                    \nModel Name: {best_model_name}
+                    \n'mse_train' : {model_report[best_model_name]['mse_train']},
+                    \n'mse_test' : {model_report[best_model_name]['mse_test']},
+                    \n'absolute_mean_error_train' : {model_report[best_model_name]['absolute_mean_error_train']},
+                    \n'absolute_mean_error_test' : {model_report[best_model_name]['absolute_mean_error_test']},
+                    \n'rmse_train' : {model_report[best_model_name]['rmse_train']},
+                    \n'rmse_test' : {model_report[best_model_name]['rmse_test']},
+                    \n'R2score_train' : {model_report[best_model_name]['R2score_train']},
+                    \n'R2score_test' : {model_report[best_model_name]['R2score_test']},
+                    \n'adjusted_R2score_train' : {model_report[best_model_name]['adjusted_R2score_train']},
+                    \n'adjusted_R2score_test' : {model_report[best_model_name]['adjusted_R2score_test']}
+                '''
             )
             print('\n', '='*50)
 
             logging.info(
-                f'''
-                    Best Model Found: 
+                f'''Best Model Found: 
                     \nModel Name: {best_model_name}
-                    \n'mse_train' : {model_report[best_model_name].mse_train},
-                    \n'mse_test' : {model_report[best_model_name].mse_test},
-                    \n'absolute_mean_error_train' : {model_report[best_model_name].absolute_mean_error_train},
-                    \n'absolute_mean_error_test' : {model_report[best_model_name].absolute_mean_error_test},
-                    \n'rmse_train' : {model_report[best_model_name].rmse_train},
-                    \n'rmse_test' : {model_report[best_model_name].rmse_test},
-                    \n'R2score_train' : {model_report[best_model_name].R2score_train},
-                    \n'R2score_test' : {model_report[best_model_name].R2score_test},
-                    \n'adjusted_R2score_train' : {model_report[best_model_name].adjusted_R2score_train},
-                    \n'adjusted_R2score_test' : {model_report[best_model_name].adjusted_R2score_test}
+                    \n'mse_train' : {model_report[best_model_name]['mse_train']},
+                    \n'mse_test' : {model_report[best_model_name]['mse_test']},
+                    \n'absolute_mean_error_train' : {model_report[best_model_name]['absolute_mean_error_train']},
+                    \n'absolute_mean_error_test' : {model_report[best_model_name]['absolute_mean_error_test']},
+                    \n'rmse_train' : {model_report[best_model_name]['rmse_train']},
+                    \n'rmse_test' : {model_report[best_model_name]['rmse_test']},
+                    \n'R2score_train' : {model_report[best_model_name]['R2score_train']},
+                    \n'R2score_test' : {model_report[best_model_name]['R2score_test']},
+                    \n'adjusted_R2score_train' : {model_report[best_model_name]['adjusted_R2score_train']},
+                    \n'adjusted_R2score_test' : {model_report[best_model_name]['adjusted_R2score_test']}
                 '''
             )
 
